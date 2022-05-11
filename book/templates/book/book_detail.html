@@ -1,0 +1,21 @@
+{% extends 'book/base.html' %}
+
+{% block content %}
+
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <p1>Author: {{ object.book_author }}</p1>
+
+        </div>
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+        <p class="article-content">{{ object.genres }}</p>
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'book-update' object.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'book-delete' object.id %}">Delete</a>
+        </div>
+    </div>
+</article>
+
+{% endblock %}
