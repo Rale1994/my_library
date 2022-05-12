@@ -7,8 +7,8 @@ from django.urls import reverse
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
     book_author = models.CharField(max_length=100)
+    content = models.TextField()
     genres = models.CharField(max_length=100, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

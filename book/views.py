@@ -24,7 +24,7 @@ books = [
 
 class BookCreateView(CreateView):
     model = Book
-    fields = ["title", "content", "book_author", "genres"]
+    fields = ["title", "book_author", "content", "genres"]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
