@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, get_list_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Book
 from django.contrib.auth.models import User
@@ -38,11 +38,22 @@ class MyBookView(LoginRequiredMixin, ListView):
     model = Book
     template_name = 'book/my_book.html'
     context_object_name = 'books'
-    paginate_by = 4
+    paginate_by = 5
 
     def get_queryset(self):
         user1 = get_object_or_404(User, username=self.kwargs.get('username'))
         return Book.objects.filter(user=user1)
+
+
+class AuthorBookView(LoginRequiredMixin, ListView):
+    model = Book
+    template_name = 'book/author_book.html'
+    context_object_name = 'books'
+    paginate_by = 5
+
+    def get_queryset(self):
+        book_of_author = get_list_or_404(Book, book_author=self.kwargs.get('book_author'))
+        return book_of_author
 
 
 class BookDetailView(LoginRequiredMixin, DetailView):

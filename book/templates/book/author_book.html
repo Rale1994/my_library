@@ -1,13 +1,12 @@
 {% extends "book/base.html" %}
 
 {% block content %}
-<h1 class="mb-3">All my books ({{ page_obj.paginator.count }})</h1>
 {% for book in books %}
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="">{{ book.book_author }}</a>
-            <a class="btn btn-info btn-sm mt-1 mb-2 " href="{% url 'book-author' book.book_author %}">Show all my books of this author</a>
+
 
         </div>
         <h2><a class="article-title" href="{% url 'book-detail' book.id %}">{{ book.title }}</a></h2>
