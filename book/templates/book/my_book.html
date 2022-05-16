@@ -7,7 +7,7 @@
     <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="">{{ book.book_author }}</a>
-            <a class="btn btn-info btn-sm mt-1 mb-2 " href="{% url 'book-author' book.book_author %}">Show all my books of this author</a>
+            <a class="btn btn-info btn-sm mt-1 mb-2 " href="{% url 'book-author'  request.user.username book.book_author  %}">Show all my books of this author</a>
 
         </div>
         <h2><a class="article-title" href="{% url 'book-detail' book.id %}">{{ book.title }}</a></h2>
